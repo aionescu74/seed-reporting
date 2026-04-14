@@ -177,7 +177,7 @@ if($table == "" && $report == "" && $view == "" && $entityItemReport == "")
             . "     whereValue  = Where clause value\n\t"
             . "     whereClause = Where clause: default is EQUAL, but it can be LIKE\n\t"
             . "     limit   = Number of records to be returned (no default)\n\t"
-            . "     scope   = Scope: normal select (default), create (returns CREATE VIEW statement)\n\t"
+            . "     scope   = Scope: normal select (default), create (returns CREATE VIEW statement)\n\n\n"
             . "C. CUSTOM REPORTS: \n\t"
             . "1. GET: returns a report execution in the database\n\t"
             . " Example: GET https://{host}/seed/api/?report={report code}\n\t"
@@ -193,7 +193,28 @@ if($table == "" && $report == "" && $view == "" && $entityItemReport == "")
             . " Parameters:\n\t"
             . "     report  = Report code. To return all reports use * \n\t"
             . "     id      = The value of the PK to be searched (the item unique id)\n\t"
-            . "     scope   = Scope: select (default), explain (shows report SQL).\n\n\n";
+            . "     scope   = Scope: select (default), explain (shows report SQL).\n\n\n"
+            . "\n"
+            . "E. RESPONSE STRUCTURE:\n"
+. "{
+    \"records\": 
+    [
+        {
+            \"<column_name_1>\": \"value\",
+            \"<column_name_2>\": \"value\",
+            ...
+        },
+        {
+            \"<column_name_1>\": \"value\",
+            \"<column_name_2>\": \"value\",
+            ...
+        },
+        ...
+    ]
+}
+
+NOTE: 'records' object keys map directly to the columns of the table/view/report specified as parameter. 
+All field values are strings.\n\n";
     
     
     if($format == "")
